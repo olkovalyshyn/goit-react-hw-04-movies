@@ -7,7 +7,7 @@ async function fetchWithErrorHandling(url = "", config = {}) {
 
 export function fetchMoviesTop() {
   return fetchWithErrorHandling(
-    "https://api.themoviedb.org/3/trending/movie/day?api_key=632130da274d6de5764c9929cd146b8b"
+    `https://api.themoviedb.org/3/trending/movie/day?api_key=632130da274d6de5764c9929cd146b8b`
   );
 }
 
@@ -17,9 +17,9 @@ export function fetchMoviesFind() {
   );
 }
 
-export function fetchMovieDetails() {
+export function fetchMovieDetails(movieId) {
   return fetchWithErrorHandling(
-    "https://api.themoviedb.org/3/movie/{movie_id}?api_key=632130da274d6de5764c9929cd146b8b&language=en-US"
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=632130da274d6de5764c9929cd146b8b&language=en-US`
   );
 }
 

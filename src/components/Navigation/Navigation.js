@@ -11,6 +11,7 @@ const Navigation = () => (
     >
       Home
     </NavLink>
+
     <NavLink
       to="/movies"
       className={style.link}
