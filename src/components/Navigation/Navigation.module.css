@@ -1,0 +1,13 @@
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+}
+
+.activeLink {
+  /* composes: link; */
+  color: #ff0000;
+}
