@@ -19,6 +19,7 @@ const Navigation = () => (
     >
       Movies
     </NavLink>
+    <br />
   </nav>
 );
 

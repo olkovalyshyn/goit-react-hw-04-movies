@@ -2,9 +2,9 @@ import { Switch, Route } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 import Appbar from "./components/AppBar/AppBar";
-import MoviesPage from "./components/MoviesPage/MoviesPage";
+import Find from "./views/Find/Find";
 import HomePage from "./components/HomePage/HomePage";
-import MovieDetailsPage from "./views/MovieDetailsPage";
+import MovieDetailsPage from "./views/MovieDetailsPage/MovieDetailsPage";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         </Route>
 
         <Route path="/movies" exact>
-          <MoviesPage />
+          <Find />
         </Route>
 
         <Route path="/movies/:movieId">

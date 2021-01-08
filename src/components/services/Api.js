@@ -1,3 +1,5 @@
+export const BASE_IMG_URL = "https://image.tmdb.org/t/p/w342/";
+
 async function fetchWithErrorHandling(url = "", config = {}) {
   const response = await fetch(url, config);
   return response.ok
@@ -11,9 +13,9 @@ export function fetchMoviesTop() {
   );
 }
 
-export function fetchMoviesFind() {
+export function fetchMoviesFind(query) {
   return fetchWithErrorHandling(
-    "https://api.themoviedb.org/3/search/movie?api_key=632130da274d6de5764c9929cd146b8b&language=en-US&page=1&include_adult=false"
+    `https://api.themoviedb.org/3/search/movie?api_key=632130da274d6de5764c9929cd146b8b&language=en-US&query=${query}&page=1&include_adult=false`
   );
 }
 
@@ -23,14 +25,14 @@ export function fetchMovieDetails(movieId) {
   );
 }
 
-export function fetchMovieCast() {
+export function fetchMovieCast(movieId) {
   return fetchWithErrorHandling(
-    "https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=632130da274d6de5764c9929cd146b8b&language=en-US"
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=632130da274d6de5764c9929cd146b8b&language=en-US`
   );
 }
 
-export function fetchMovieReview() {
+export function fetchMovieReview(movieId) {
   return fetchWithErrorHandling(
-    "https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=632130da274d6de5764c9929cd146b8b&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=632130da274d6de5764c9929cd146b8b&language=en-US&page=1`
   );
 }
