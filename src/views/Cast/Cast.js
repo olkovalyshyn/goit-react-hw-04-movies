@@ -34,5 +34,5 @@ export default function Cast({ movieId }) {
 }
 
 Cast.propTypes = {
-  movieId: PropTypes.array,
+  movieId: PropTypes.object,
 };

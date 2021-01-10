@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { NavLink, Link, useRouteMatch } from "react-router-dom";
+import { NavLink, Link, useRouteMatch, useLocation } from "react-router-dom";
 
 import * as API from "../../components/services/Api";
 import FindBar from "../FindBar/FindBar";
-import SingleMovie from "../SingleMovie/SingleMovie";
 
 export default function FindResult() {
   const [queryInput, setQueryInput] = useState();
-  const [moviesSelected, setMoviesSelected] = useState();
-  const { url } = useRouteMatch();
 
-  // console.log("!!!queryInput in FindResult", queryInput);
+  const [moviesSelected, setMoviesSelected] = useState();
+
+  const { url } = useRouteMatch();
+  const location = useLocation();
 
   useEffect(() => {
     if (!queryInput) {
@@ -19,8 +19,8 @@ export default function FindResult() {
     }
 
     API.fetchMoviesFind(queryInput).then(setMoviesSelected);
-  }, [queryInput]);
-  // console.log("!!!moviesSelected", moviesSelected);
+  }, [location.search, queryInput]);
+
   return (
     <>
       <FindBar getSearchQuery={setQueryInput} />
@@ -28,12 +28,17 @@ export default function FindResult() {
         {moviesSelected &&
           moviesSelected.results.map((movie) => (
             <li key={movie.id}>
-              <Link to={`${url}/${movie.id}`}>{movie.title}</Link>
+              <Link
+                to={{
+                  pathname: `${url}/${movie.id}`,
+                  state: { from: location },
+                }}
+              >
+                {movie.title}
+              </Link>
             </li>
           ))}
       </ul>
-
-      {/* <SingleMovie movie={moviesSelected} /> */}
     </>
   );
 }

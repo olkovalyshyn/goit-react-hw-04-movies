@@ -5,6 +5,7 @@ import {
   useParams,
   Route,
   useHistory,
+  useLocation,
 } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -17,12 +18,22 @@ export default function SingleMovie({ movie }) {
   const { url } = useRouteMatch();
   const { movieId } = useParams();
   const history = useHistory();
+  const location = useLocation();
+
+  // console.log("!!!location SECOND", location);
+  // console.log("!!!history SECOND", history);
+
+  const onGoBack = () => {
+    history.push(location?.state?.from ?? "/");
+  };
 
   return (
     <>
       <div>
         <nav>
-          <button onClick={() => history.goBack()}>go back</button>
+          <button type="button" onClick={onGoBack}>
+            go back
+          </button>
           {/* <NavLink exact to="/">
             {`<= Go back`}
           </NavLink> */}
