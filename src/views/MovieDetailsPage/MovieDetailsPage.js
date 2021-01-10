@@ -10,6 +10,7 @@ import * as API from "../../components/services/Api";
 
 import Cast from "../Cast/Cast";
 import Reviews from "../Reviews/Reviews";
+import SingleMovie from "../SingleMovie/SingleMovie";
 
 import styles from "./MovieDetailsPage.module.css";
 
@@ -23,58 +24,59 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   return (
-    <>
-      <nav>
-        <NavLink exact to="/">
-          {`<= Go back`}
-        </NavLink>
-      </nav>
-      <div className={styles.container}>
-        {movie && (
-          <div>
-            <img src={API.BASE_IMG_URL + movie.poster_path}></img>
-          </div>
-        )}
+    <SingleMovie movie={movie} />
+    // <>
+    //   <nav>
+    //     <NavLink exact to="/">
+    //       {`<= Go back`}
+    //     </NavLink>
+    //   </nav>
+    //   <div className={styles.container}>
+    //     {movie && (
+    //       <div>
+    //         <img src={API.BASE_IMG_URL + movie.poster_path}></img>
+    //       </div>
+    //     )}
 
-        <div className={styles.containerInfo}>
-          <h1>{movie.title}</h1>
-          <p>
-            User score: <span>{movie.vote_average * 10}%</span>
-          </p>
-          <h3>Overview</h3>
-          <p>{movie.overview}</p>
-          <h3>Genres</h3>
+    //     <div className={styles.containerInfo}>
+    //       <h1>{movie.title}</h1>
+    //       <p>
+    //         User score: <span>{movie.vote_average * 10}%</span>
+    //       </p>
+    //       <h3>Overview</h3>
+    //       <p>{movie.overview}</p>
+    //       <h3>Genres</h3>
 
-          {movie.genres && (
-            <ul>
-              {movie.genres.map((genre) => (
-                <li key={genre.id}>{genre.name}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
+    //       {movie.genres && (
+    //         <ul>
+    //           {movie.genres.map((genre) => (
+    //             <li key={genre.id}>{genre.name}</li>
+    //           ))}
+    //         </ul>
+    //       )}
+    //     </div>
+    //   </div>
 
-      <hr />
+    //   <hr />
 
-      <ul>
-        Additional information
-        <li>
-          <NavLink to={`${url}/cast`}>Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to={`${url}/reviews`}>Reviews</NavLink>
-        </li>
-      </ul>
-      <hr />
+    //   <ul>
+    //     Additional information
+    //     <li>
+    //       <NavLink to={`${url}/cast`}>Cast</NavLink>
+    //     </li>
+    //     <li>
+    //       <NavLink to={`${url}/reviews`}>Reviews</NavLink>
+    //     </li>
+    //   </ul>
+    //   <hr />
 
-      <Route path={`/movies/${movieId}/cast`}>
-        <Cast movieId={movieId} />
-      </Route>
+    //   <Route path={`/movies/${movieId}/cast`}>
+    //     <Cast movieId={movieId} />
+    //   </Route>
 
-      <Route path={`/movies/${movieId}/reviews`}>
-        <Reviews movieId={movieId} />
-      </Route>
-    </>
+    //   <Route path={`/movies/${movieId}/reviews`}>
+    //     <Reviews movieId={movieId} />
+    //   </Route>
+    // </>
   );
 }

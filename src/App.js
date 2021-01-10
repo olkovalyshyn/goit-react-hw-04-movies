@@ -2,7 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 import Appbar from "./components/AppBar/AppBar";
-import Find from "./views/Find/Find";
+import FindResult from "./views/FindResult/FindResult";
 import HomePage from "./components/HomePage/HomePage";
 import MovieDetailsPage from "./views/MovieDetailsPage/MovieDetailsPage";
 
@@ -17,7 +17,7 @@ function App() {
         </Route>
 
         <Route path="/movies" exact>
-          <Find />
+          <FindResult />
         </Route>
 
         <Route path="/movies/:movieId">

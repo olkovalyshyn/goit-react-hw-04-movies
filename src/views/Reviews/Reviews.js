@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import * as API from "../../components/services/Api";
 
 export default function Reviews({ movieId }) {
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState();
 
   useEffect(
     () =>
@@ -24,7 +24,7 @@ export default function Reviews({ movieId }) {
           ))}
         </ul>
       ) : (
-        "We don`t have any review for this movie."
+        <h2>"We don`t have any review for this movie."</h2>
       )}
     </>
   );
