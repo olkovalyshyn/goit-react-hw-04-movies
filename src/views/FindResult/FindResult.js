@@ -10,16 +10,17 @@ export default function FindResult() {
   const [moviesSelected, setMoviesSelected] = useState();
   const { url } = useRouteMatch();
 
-  console.log("!!!queryInput in FindResult", queryInput);
+  // console.log("!!!queryInput in FindResult", queryInput);
 
   useEffect(() => {
     if (!queryInput) {
-      return console.log("Відсутній запит по пошуку перед рендером");
+      return [];
+      // return console.log("Відсутній запит по пошуку перед рендером");
     }
 
     API.fetchMoviesFind(queryInput).then(setMoviesSelected);
   }, [queryInput]);
-  console.log("!!!moviesSelected", moviesSelected);
+  // console.log("!!!moviesSelected", moviesSelected);
   return (
     <>
       <FindBar getSearchQuery={setQueryInput} />

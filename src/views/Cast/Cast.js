@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import * as API from "../../components/services/Api";
 
@@ -8,6 +9,8 @@ export default function Cast({ movieId }) {
   useEffect(() => {
     API.fetchMovieCast(movieId).then((response) => setCast(response.cast));
   }, [movieId]);
+
+  // console.log("!!!cast", cast);
 
   return (
     <>
@@ -29,3 +32,7 @@ export default function Cast({ movieId }) {
     </>
   );
 }
+
+Cast.propTypes = {
+  movieId: PropTypes.array,
+};

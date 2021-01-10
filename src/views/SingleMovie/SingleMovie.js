@@ -6,6 +6,7 @@ import {
   Route,
   useHistory,
 } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import styles from "./SingleMovie.module.css";
 import * as API from "../../components/services/Api";
@@ -29,7 +30,7 @@ export default function SingleMovie({ movie }) {
         <div className={styles.container}>
           {movie && (
             <div>
-              <img src={API.BASE_IMG_URL + movie.poster_path}></img>
+              <img src={API.BASE_IMG_URL + movie.poster_path} width="300"></img>
             </div>
           )}
 
@@ -77,3 +78,7 @@ export default function SingleMovie({ movie }) {
     </>
   );
 }
+
+SingleMovie.propTypes = {
+  movie: PropTypes.array,
+};

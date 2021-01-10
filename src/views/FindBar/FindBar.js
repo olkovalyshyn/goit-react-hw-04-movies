@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useHistory, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export default function FindBar({ getSearchQuery }) {
   const history = useHistory();
@@ -27,7 +28,7 @@ export default function FindBar({ getSearchQuery }) {
     getSearchQuery(inputValue);
   };
 
-  const queryOrder = new URLSearchParams(location.search).get("query") ?? "";
+  // const queryOrder = new URLSearchParams(location.search).get("query") ?? "";
 
   // console.log(
   //   "Якщо тут пусто, то в УРЛ нічого не піде (inputValue)",
@@ -49,3 +50,7 @@ export default function FindBar({ getSearchQuery }) {
     </>
   );
 }
+
+FindBar.propTypes = {
+  getSearchQuery: PropTypes.string,
+};

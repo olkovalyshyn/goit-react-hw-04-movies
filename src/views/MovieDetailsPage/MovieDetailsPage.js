@@ -1,18 +1,8 @@
-import {
-  generatePath,
-  useParams,
-  NavLink,
-  useRouteMatch,
-  Route,
-} from "react-router-dom";
+import { generatePath, useParams, useRouteMatch } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as API from "../../components/services/Api";
 
-import Cast from "../Cast/Cast";
-import Reviews from "../Reviews/Reviews";
 import SingleMovie from "../SingleMovie/SingleMovie";
-
-import styles from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState([]);
