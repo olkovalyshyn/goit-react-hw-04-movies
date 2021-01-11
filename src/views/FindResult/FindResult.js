@@ -6,20 +6,24 @@ import FindBar from "../FindBar/FindBar";
 
 export default function FindResult() {
   const [queryInput, setQueryInput] = useState();
-
   const [moviesSelected, setMoviesSelected] = useState();
 
   const { url } = useRouteMatch();
   const location = useLocation();
 
   useEffect(() => {
-    if (!queryInput) {
-      return [];
-      // return console.log("Відсутній запит по пошуку перед рендером");
+    if (queryInput) {
+      localStorage.setItem("QueryInputForGoBack", queryInput);
     }
+  }, [queryInput]);
 
-    API.fetchMoviesFind(queryInput).then(setMoviesSelected);
-  }, [location.search, queryInput]);
+  useEffect(() => {
+    queryInput
+      ? API.fetchMoviesFind(queryInput).then(setMoviesSelected)
+      : API.fetchMoviesFind(localStorage.getItem("QueryInputForGoBack")).then(
+          setMoviesSelected
+        );
+  }, [queryInput]);
 
   return (
     <>
