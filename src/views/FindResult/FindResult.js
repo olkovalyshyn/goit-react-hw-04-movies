@@ -17,12 +17,37 @@ export default function FindResult() {
     }
   }, [queryInput]);
 
+  // useEffect(() => {
+  //   queryInput
+  //     ? API.fetchMoviesFind(queryInput).then(setMoviesSelected)
+  //     : API.fetchMoviesFind(localStorage.getItem("QueryInputForGoBack")).then(
+  //         setMoviesSelected
+  //       );
+  // }, [queryInput]);
+
+  // useEffect(() => {
+  //   queryInput
+  //     ? API.fetchMoviesFind(queryInput).then(setMoviesSelected)
+  //     : localStorage.getItem("QueryInputForGoBack")
+  //     ? API.fetchMoviesFind(localStorage.getItem("QueryInputForGoBack")).then(
+  //         setMoviesSelected
+  //       )
+  //     : API.fetchMoviesFind(0).then(setMoviesSelected);
+  // }, [queryInput]);
+
   useEffect(() => {
-    queryInput
-      ? API.fetchMoviesFind(queryInput).then(setMoviesSelected)
-      : API.fetchMoviesFind(localStorage.getItem("QueryInputForGoBack")).then(
+    const fetchLocalStorage = () => {
+      if (localStorage.getItem("QueryInputForGoBack") === null) {
+        return;
+      } else
+        API.fetchMoviesFind(localStorage.getItem("QueryInputForGoBack")).then(
           setMoviesSelected
         );
+    };
+
+    queryInput
+      ? API.fetchMoviesFind(queryInput).then(setMoviesSelected)
+      : fetchLocalStorage();
   }, [queryInput]);
 
   return (
