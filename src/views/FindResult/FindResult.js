@@ -2,20 +2,14 @@ import { useState, useEffect } from "react";
 import { NavLink, Link, useRouteMatch, useLocation } from "react-router-dom";
 
 import * as API from "../../components/services/Api";
-import FindBar from "../FindBar/FindBar";
+import FindBar from "../../components/FindBar/FindBar";
 
 export default function FindResult() {
-  const [queryInput, setQueryInput] = useState();
+  const [queryInput, setQueryInput] = useState("");
   const [moviesSelected, setMoviesSelected] = useState();
 
   const { url } = useRouteMatch();
   const location = useLocation();
-
-  useEffect(() => {
-    if (queryInput) {
-      localStorage.setItem("QueryInputForGoBack", queryInput);
-    }
-  }, [queryInput]);
 
   // useEffect(() => {
   //   queryInput
@@ -36,6 +30,10 @@ export default function FindResult() {
   // }, [queryInput]);
 
   useEffect(() => {
+    if (queryInput) {
+      localStorage.setItem("QueryInputForGoBack", queryInput);
+    }
+
     const fetchLocalStorage = () => {
       if (localStorage.getItem("QueryInputForGoBack") === null) {
         return;
